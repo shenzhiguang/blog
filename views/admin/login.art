@@ -6,14 +6,14 @@
         <div class="login-container">
             <h4 class="title">黑马程序员 - 博客管理员登录</h4>
             <div class="login">
-                <form action="user.html">
+                <form id="loginForm" action="/admin/login" method="post">
                     <div class="form-group">
                         <label>邮件</label>
-                        <input type="email" class="form-control" placeholder="请输入邮件地址">
+                        <input name="email" type="email" class="form-control" placeholder="请输入邮件地址">
                     </div>
                     <div class="form-group">
                         <label>密码</label>
-                        <input type="password" class="form-control" placeholder="请输入密码">
+                        <input name="password" type="password" class="form-control" placeholder="请输入密码">
                     </div>
                     <button type="submit" class="btn btn-primary">登录</button>
                 </form>
@@ -21,4 +21,24 @@
             <div class="tips"></div>
         </div>
     </div>
+{{/block}}
+{{block 'script'}}
+    <script>
+      
+        // 为表单添加提交事件
+        $('#loginForm').on('submit', function () {
+            // 获取到表单中用户输入的内容
+            // serializeArray()
+            // [{name: 'email', value: '用户输入的内容'}]
+            // 阻止表单默认提交行为
+            var result = serializeToJson($(this));
+            // 如果用户没有输入邮件地址或密码的话
+            if (result.email.trim().length == 0 || result.password.trim().length == 0) {
+                alert('请输入邮件地址或密码')
+                // 阻止程序向下执行
+                return false;   // 同时也阻止默认提交
+            }
+            
+        })
+    </script>
 {{/block}}
