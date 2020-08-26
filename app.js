@@ -40,6 +40,10 @@ app.use('/admin', require('./middleware/loginGuard'))
 app.use('/home', home)
 app.use('/admin', admin)
 
+// app.use((err, req, res, next) => {
+//     res.redirect(`/admin/user-edit?message=${err.message}`)
+// })
+
 app.listen('80', () => {
     console.log('Server is running...')
 })
