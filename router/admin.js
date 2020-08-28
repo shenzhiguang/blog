@@ -22,4 +22,7 @@ admin.post('/user-edit', require('./admin/user-edit-fn'))
 
 admin.post('/user-modify', require('./admin/user-modify'))
 
+// 创建删除用户信息的路由
+admin.get('/delete', require('./admin/user-delete'))
+
 module.exports = admin
